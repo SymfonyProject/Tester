@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\PedidosProductos" table="pedidos_productos">
+    <indexes>
+      <index name="idpedido_idx" columns="idpedido"/>
+      <index name="idproducto_idx" columns="idproducto"/>
+    </indexes>
+    <id name="idpedidosProductos" type="integer" column="idpedidos_productos">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="precio" type="decimal" column="precio" precision="5" scale="2" nullable="true"/>
+    <field name="cantidad" type="integer" column="cantidad" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idproducto" target-entity="Productos" fetch="LAZY">
+      <join-columns>
+        <join-column name="idproducto" referenced-column-name="idproducto"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idpedido" target-entity="Pedido" fetch="LAZY">
+      <join-columns>
+        <join-column name="idpedido" referenced-column-name="idpedido"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

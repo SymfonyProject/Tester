@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block jumbotron %}<h1>Detalles de Producto</h1>{% endblock %}
+
+{% block body %}
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ producto.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Precio</th>
+                <td>{{ producto.precio }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ producto.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Idproducto</th>
+                <td>{{ producto.idproducto }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('productos_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('productos_edit', { 'idproducto': producto.idproducto }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

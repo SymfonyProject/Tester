@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block jumbotron %}<h1>Listado de Clientes</h1>{% endblock %}
+
+{% block body %}
+    <table  class="table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Mail</th>
+                <th>Password</th>
+                <th>Direccion</th>
+                <th>Cpostal</th>
+                <th>Ciudad</th>
+                <th>Idclientes</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cliente in clientes %}
+            <tr>
+                <td class="danger"><a href="{{ path('clientes_show', { 'idclientes': cliente.idclientes }) }}">{{ cliente.mail }}</a></td>
+                <td class="danger">{{ cliente.password }}</td>
+                <td class="danger">{{ cliente.direccion }}</td>
+                <td class="danger">{{ cliente.cpostal }}</td>
+                <td class="danger">{{ cliente.ciudad }}</td>
+                <td class="danger">{{ cliente.idclientes }}</td>
+                <td class="danger">
+                    <ul>
+                        <li>
+                            <a href="{{ path('clientes_show', { 'idclientes': cliente.idclientes }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('clientes_edit', { 'idclientes': cliente.idclientes }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('clientes_new') }}">Create a new cliente</a>
+        </li>
+    </ul>
+{% endblock %}

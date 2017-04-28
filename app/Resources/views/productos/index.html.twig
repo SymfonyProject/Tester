@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block jumbotron %}<h1>Listado de Productos</h1>{% endblock %}
+
+{% block body %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Descripcion</th>
+                <th>Idproducto</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for producto in productos %}
+            <tr>
+                <td><a href="{{ path('productos_show', { 'idproducto': producto.idproducto }) }}">{{ producto.nombre }}</a></td>
+                <td>{{ producto.precio }}</td>
+                <td>{{ producto.descripcion }}</td>
+                <td>{{ producto.idproducto }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('productos_show', { 'idproducto': producto.idproducto }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('productos_edit', { 'idproducto': producto.idproducto }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('productos_new') }}">Create a new producto</a>
+        </li>
+    </ul>
+{% endblock %}

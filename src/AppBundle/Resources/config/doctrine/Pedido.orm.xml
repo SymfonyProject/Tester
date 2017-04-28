@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Pedido" table="pedido">
+    <indexes>
+      <index name="idcliente_idx" columns="idcliente"/>
+    </indexes>
+    <id name="idpedido" type="integer" column="idpedido">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="fecha" type="datetime" column="fecha" nullable="true"/>
+    <field name="importe" type="decimal" column="importe" precision="6" scale="2" nullable="true"/>
+    <field name="iva" type="decimal" column="iva" precision="10" scale="0" nullable="true"/>
+    <many-to-one field="idcliente" target-entity="Clientes" fetch="LAZY">
+      <join-columns>
+        <join-column name="idcliente" referenced-column-name="idclientes"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

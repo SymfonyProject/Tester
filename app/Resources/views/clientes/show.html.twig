@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block jumbotron %}<h1>Datos de Cliente</h1>{% endblock %}
+
+{% block body %}
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Mail</th>
+                <td>{{ cliente.mail }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ cliente.password }}</td>
+            </tr>
+            <tr>
+                <th>Direccion</th>
+                <td>{{ cliente.direccion }}</td>
+            </tr>
+            <tr>
+                <th>Cpostal</th>
+                <td>{{ cliente.cpostal }}</td>
+            </tr>
+            <tr>
+                <th>Ciudad</th>
+                <td>{{ cliente.ciudad }}</td>
+            </tr>
+            <tr>
+                <th>Idclientes</th>
+                <td>{{ cliente.idclientes }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('clientes_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('clientes_edit', { 'idclientes': cliente.idclientes }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
